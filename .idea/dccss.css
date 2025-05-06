@@ -38,33 +38,32 @@ body {
 
 /* 登入容器樣式 */
 .login-container {
-    background-color: #303136; /* 容器的深色背景 */
-    padding: 30px; /* 容器內邊距 */
-    border-radius: 8px; /* 圓角 */
-    /* width: 100%; 這行可以移除，因為 flex 項目會根據內容和 flex 屬性調整寬度 */
-    max-width: 700px; /* **增加容器最大寬度** 以容納並排的兩個區塊 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
-    /* text-align: left; 這行在這裡作用不大，因為內部是 Flexbox */
+    background-color: #303136;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 700px; /* 增加容器最大寬度 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 
-    /* --- 改變 Flexbox 方向，讓主要內容區塊和 QR Code 區塊並排 --- */
     display: flex;
-    flex-direction: row; /* 讓直接子元素 (login-form-area 和 qr-code-section) 水平排列 */
-    gap: 40px; /* 在主要內容區塊和 QR Code 區塊之間創建水平間距 */
-    align-items: flex-start; /* 讓兩個區塊從頂部對齊 */
-    /* ------------------------------------------------------- */
-
-    /* 移除原來的垂直堆疊和間距設置 */
-    /* flex-direction: column; */
-    /* gap: 20px; */
+    flex-direction: row; /* 水平排列 */
+    gap: 40px; /* 水平間距 */
+    align-items: flex-start; /* 頂部對齊 */
 }
 
-/* 新增主要登入內容區塊的樣式 */
+/* 主要登入內容區塊的樣式 - 比例為 2 */
 .login-form-area {
-    display: flex; /* 使用 Flexbox 排列其內部元素 */
-    flex-direction: column; /* 讓內部元素 (h2, p, form, .signup-link) 垂直堆疊 */
-    gap: 20px; /* 內部元素之間的垂直間距 (與原 login-container 的 gap 類似) */
-    flex-grow: 1; /* 允許這個區塊盡可能地佔據可用空間 (讓它比 QR code 區塊寬) */
-    /* min-width: 280px; 可以設定最小寬度，避免縮得太小 */
+    display: flex;
+    flex-direction: column; /* 內部元素垂直堆疊 */
+    gap: 20px; /* 內部元素垂直間距 */
+
+    /* --- 控制比例 --- */
+    /* flex-grow: 2;  允許這個區塊在有剩餘空間時，以 2 的比例增長 */
+    /* flex-shrink: 1; 在空間不足時允許縮小 (預設值) */
+    /* flex-basis: 0; 設定初始尺寸為 0，這樣剩餘空間會完全根據 flex-grow 的比例分配 */
+    flex: 2 1 0; /* 上面三個屬性的簡寫 */
+    /* ------------ */
+
+    min-width: 250px; /* 設定最小寬度，防止在小螢幕時內容擠壓過度 */
 }
 
 /* 以下是原本在 .login-container 下面的樣式，現在可能需要微調或確認間距由新的 login-form-area 的 gap 處理 */
@@ -125,7 +124,7 @@ body {
 
 /* 忘記密碼連結樣式 (現在是表單的直接子元素) */
 .login-form-area form .forgot-password { /* 改為針對 .login-form-area 內的 form 裡的連結 */
-    color: #00aff4;
+    color: #6c8cd7;
     text-decoration: none;
     font-size: 0.9em;
     margin-bottom: 0; /* 間距由父容器 (form) 的 gap 處理 */
@@ -163,7 +162,7 @@ body {
 
 /* 註冊連結本身樣式 */
 .login-form-area .signup-link a { /* 改為針對 .login-form-area 內的 .signup-link 裡的連結 */
-    color: #00aff4;
+    color: #6c8cd7;
     text-decoration: none;
 }
 
@@ -173,29 +172,31 @@ body {
 }
 
 
-/* QR Code 區塊樣式 (Flexbox 垂直排列內部元素) */
+/* QR Code 區塊樣式 - 比例為 1 */
 .qr-code-section {
-    /* 原有的內部 Flexbox 樣式保持不變，它負責 QR Code 區塊內的垂直排列 */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* 內部元素垂直堆疊 */
     align-items: center; /* 內部元素水平居中 */
     gap: 10px; /* 內部元素垂直間距 */
 
-    /* --- 新增用於並排佈局的樣式 --- */
-    flex-shrink: 0; /* 防止這個區塊在空間不足時縮小 */
-    width: 180px; /* 設定 QR Code 區塊的固定寬度 (可調整) */
-    /* ------------------------------ */
+    /* --- 控制比例 --- */
+    /* flex-grow: 1; 允許這個區塊在有剩餘空間時，以 1 的比例增長 (是左邊的一半) */
+    /* flex-shrink: 1; 在空間不足時允許縮小 (預設值) */
+    /* flex-basis: 0; 設定初始尺寸為 0 */
+    flex: 1 1 0; /* 上面三個屬性的簡寫 */
+    /* ------------ */
 
-    /* 移除原來的與上方內容的間距和邊框 */
+    /* 移除原來的固定寬度 */
+    /* width: 180px; */
+    min-width: 150px; /* 設定最小寬度，防止 QR code 過小無法掃描 */
+
+    /* 添加與左側內容的分隔線和間距 */
+    padding-left: 40px;
+    border-left: 1px solid #232528;
+
     margin-top: 0;
     padding-top: 0;
     border-top: none;
-
-    /* 添加與左側內容的分隔線和間距 */
-    padding-left: 40px; /* 邊框左側的內邊距 (間距) */
-    border-left: 1px solid #232528; /* 左側邊框作為分隔線 */
-
-    /* text-align: center; 這行現在作用不大，因為 align-items: center 已經處理了內部元素的水平居中 */
 }
 
 /* QR Code 圖片樣式 */
