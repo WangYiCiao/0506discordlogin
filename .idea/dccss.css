@@ -1,0 +1,168 @@
+/* style.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif; /* 設定一個基礎字體 */
+    background-color: #36393f; /* Discord 類似的深色背景 */
+    color: #dcddde; /* 設定頁面基礎文字顏色 */
+
+    /* --- 使用 Flexbox 讓內容垂直水平居中 --- */
+    display: flex;
+    justify-content: center; /* 主軸 (預設是水平) 居中對齊 */
+    align-items: center; /* 副軸 (預設是垂直) 居中對齊 */
+    min-height: 100vh; /* 確保 body 至少佔滿整個視口的高度 */
+    /* --------------------------------------- */
+}
+
+.login-container {
+    background-color: #303136; /* 容器的深色背景 */
+    padding: 30px;
+    border-radius: 8px; /* 圓角 */
+    width: 100%;
+    max-width: 400px; /* 限制容器最大寬度 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+    text-align: left; /* 預設文字靠左對齊 */
+
+    /* --- 使用 Flexbox 排列容器內的元素 --- */
+    display: flex;
+    flex-direction: column; /* 讓子元素垂直堆疊 */
+    gap: 20px; /* 在子元素之間創建間距 */
+    /* ------------------------------------- */
+}
+
+/* 標題樣式 */
+.login-container h2 {
+    text-align: center; /* 標題文字居中 */
+    margin-bottom: 5px; /* 調整下方間距 */
+    color: #ffffff; /* 標題顏色更亮 */
+}
+
+/* 副標題樣式 */
+.login-container p:first-of-type {
+    text-align: center; /* 副標題文字居中 */
+    margin-top: 0; /* 移除預設上方間距 */
+    margin-bottom: 20px; /* 調整下方間距 */
+    color: #b9bbbe; /* 顏色稍微暗淡 */
+}
+
+
+/* 表單樣式 */
+.login-container form {
+    display: flex;
+    flex-direction: column; /* 表單內的元素也垂直堆疊 */
+    gap: 15px; /* 表單組之間的間距 */
+}
+
+/* 表單組 (label + input) 樣式 */
+.form-group {
+    display: flex;
+    flex-direction: column; /* 讓 Label 在 Input 上方 */
+}
+
+/* Label 樣式 */
+.form-group label {
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    color: #b9bbbe;
+    font-weight: bold;
+    text-transform: uppercase; /* 文字轉大寫，類似 Discord 樣式 */
+}
+
+/* 輸入框樣式 */
+.form-group input {
+    padding: 10px;
+    border: 1px solid #232528; /* 較深的邊框 */
+    border-radius: 4px;
+    background-color: #202225; /* 輸入框的深色背景 */
+    color: #dcddde; /* 輸入文字的顏色 */
+    font-size: 1em;
+    box-sizing: border-box; /* 讓 padding 包含在寬度內 */
+}
+
+/* 輸入框獲取焦點時的樣式 */
+.form-group input:focus {
+    outline: none; /* 移除瀏覽器預設的焦點外框 */
+    border-color: #5865f2; /* Discord 藍色邊框 */
+}
+
+/* 忘記密碼連結樣式 */
+.forgot-password {
+    color: #00aff4; /* Discord 類似的連結藍色 */
+    text-decoration: none; /* 移除底線 */
+    font-size: 0.9em;
+    margin-bottom: 15px; /* 調整下方間距 */
+    display: block; /* 讓連結佔據整行，方便控制 margin */
+}
+
+.forgot-password:hover {
+    text-decoration: underline; /* 滑鼠懸停時顯示底線 */
+}
+
+/* 登入按鈕樣式 */
+#login-button {
+    background-color: #5865f2; /* Discord 藍色 */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer; /* 鼠標變成手型 */
+    transition: background-color 0.2s ease; /* 平滑過渡效果 */
+}
+
+/* 按鈕滑鼠懸停時的樣式 */
+#login-button:hover {
+    background-color: #4752c4; /* 顏色變深 */
+}
+
+/* 註冊連結容器樣式 */
+.signup-link {
+    text-align: center; /* 文字居中 */
+    margin-top: 15px; /* 調整上方間距 */
+    font-size: 0.9em;
+}
+
+/* 註冊連結本身樣式 */
+.signup-link a {
+    color: #00aff4; /* 連結藍色 */
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* QR Code 區塊樣式 (如果使用) */
+/*
+.qr-code-section {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #232528; // 分隔線
+    display: flex; // 使用 flexbox
+    flex-direction: column; // 垂直堆疊
+    align-items: center; // 內容居中
+    gap: 10px; // 內部元素間距
+}
+
+.qr-code-section img {
+    width: 150px; // QR Code 圖片大小
+    height: auto;
+    background-color: white; // 模擬白色 QR Code 區域
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.qr-code-section h3 {
+    margin: 0 0 5px 0;
+    color: #ffffff;
+    font-size: 1.1em;
+}
+
+.qr-code-section p {
+    margin: 0;
+    font-size: 0.8em;
+    color: #b9bbbe;
+}
+*/
