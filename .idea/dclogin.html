@@ -2,44 +2,50 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登入 - Dicsrod</title>
     <link rel="stylesheet" href="dccss.css">
 </head>
 <body>
 
+<!-- 左上角的 Discord 圖標 -->
 <img src="aiy9r-7sefs.png" alt="Discord Icon" class="discord-icon">
 
+<!-- 登入區塊 -->
 <div class="login-container">
 
+    <!-- 左邊的表單 -->
     <div class="login-form-area">
         <h2>歡迎回來！</h2>
         <p>很高興再次見到你！</p>
 
         <form id="login-form">
+            <!-- 輸入帳號 -->
             <div class="form-group">
-                <label for="email">電子郵件或電話號碼</label>
+                <label for="email">帳號（信箱或電話）</label>
                 <input type="text" id="email" name="email" required>
             </div>
 
+            <!-- 輸入密碼 -->
             <div class="form-group">
                 <label for="password">密碼</label>
                 <input type="password" id="password" name="password" required>
             </div>
 
-            <a href="#" class="forgot-password">忘記您的密碼？</a>
+            <!-- 忘記密碼連結 -->
+            <a href="#" class="forgot-password">忘記密碼？</a>
 
+            <!-- 登入按鈕 -->
             <button type="submit" id="login-button">登入</button>
         </form>
 
-        <p class="signup-link">需要一個帳號？ <a href="#">註冊</a></p>
+        <p class="signup-link">還沒有帳號？ <a href="#">註冊</a></p>
     </div>
-    <div class="qr-code-section">
 
+    <!-- 右邊的 QR code 登入區塊 -->
+    <div class="qr-code-section">
         <img src="qr.ioi.tw (1).png" alt="QR Code">
-        <h3>使用QR Code登入</h3>
-        <p>用 Discord APP 對此掃描</p>
-        <p>就能立即登入</p>
+        <h3>使用 QR Code 登入</h3>
+        <p>用 Discord APP 掃描即可</p>
     </div>
 
 </div>

@@ -1,14 +1,12 @@
-// 等待頁面 DOM 完全載入
+// 等待頁面載入完成後執行
 document.addEventListener('DOMContentLoaded', function() {
-    // 獲取登入按鈕元素
     const loginButton = document.getElementById('login-button');
 
-    // 檢查按鈕是否存在
     if (loginButton) {
-        // 為按鈕添加點擊事件監聽器
+        // 點擊登入時不讓表單自動送出
         loginButton.addEventListener('click', function(event) {
-            // 阻止表單的預設提交行為 (這樣頁面就不會刷新)
             event.preventDefault();
+            alert("登入按鈕被點擊！");
         });
     }
 });
